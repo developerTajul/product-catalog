@@ -8,7 +8,25 @@ const productdelete = document.querySelector('.delete-product');
 const msg = document.querySelector('.msg');
 
 // data / state
-const productData = [];
+let productData = [
+    /*
+    {
+        id: 0,
+        name: 'Alu',
+        price: 20
+    },
+    {
+        id: 1,
+        name: 'Potol',
+        price: 25
+    },
+    {
+        id: 2,
+        name: 'Fish',
+        price: 30
+    }
+    */
+];
 
 function getData( productsList ){
     if(productData.length){
@@ -70,3 +88,29 @@ productAdd.addEventListener('click', (e)=>{
 
 
 
+/**
+ * deleting item
+ */
+ productsListUL.addEventListener('click', (e)=>{
+    //  console.log(e.target.classList.contains('delete-product'));
+     if(e.target.classList.contains('delete-product')){
+        // remove item from display 
+        const target = e.target.parentElement;
+        e.target.parentElement.parentElement.removeChild(target);
+
+        // remove item from store
+        let id = Number(target.id.split('-')[1]);
+
+        const result = productData.filter( (e) => {
+            return e.id !== id;
+        });
+
+        productData = result;
+        
+     }
+
+     
+
+
+
+ } );
