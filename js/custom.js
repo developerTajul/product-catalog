@@ -44,11 +44,18 @@ productAdd.addEventListener('click', (e)=>{
     const name = productName.value;
     const price = productPrice.value;
 
+    let id;
+    if(productData.length === 0){
+        id = 0;
+    }else{
+        id = productData[productData.length-1].id + 1;
+    }
+
     if(name === '' || price === '' || !(!isNaN(parseFloat(price))) && isFinite(Price)){
         alert("Please insert valid data");
     }else{
         productData.push({
-            id: 4,
+            id,
             name,
             price 
         }); 
