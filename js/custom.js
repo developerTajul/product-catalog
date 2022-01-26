@@ -111,7 +111,7 @@ productAdd.addEventListener('click', (e)=>{
 
  } );
 
-
+/** 
 filterInput.addEventListener('keyup', (e)=>{
     const text = e.target.value;
     document.querySelectorAll('.collection .collection-item').forEach( item => {
@@ -127,4 +127,18 @@ filterInput.addEventListener('keyup', (e)=>{
     });
 
 }); 
+*/
+
+filterInput.addEventListener('keyup', (e)=>{
+    const text = e.target.value.toLowerCase();
+    const items = document.querySelectorAll('.collection .collection-item');
+    items.forEach((item) => {
+        const producterName = item.firstElementChild.textContent.toLowerCase();
+        if( producterName.indexOf(text) === -1){
+            item.style.display = 'none';
+        }else{
+            item.style.display = 'block';
+        }
+    });
+});
 
